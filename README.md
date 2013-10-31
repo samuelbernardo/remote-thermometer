@@ -1,2 +1,2 @@
-remote-termometer
+remote-thermometer
 =================
