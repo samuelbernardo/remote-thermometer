@@ -94,7 +94,7 @@ public class SerialCommLeitura implements Runnable, SerialPortEventListener
 			porta = (SerialPort)cp.open("SerialCommLeitura", timeout);
 			PortaOK = true;
 			//configuar parametros
-			porta.setSerialPortParams(baudrate, porta.DATABITS_8, porta.STOPBITS_1, porta.PARITY_NONE);
+			porta.setSerialPortParams(baudrate, porta.DATABITS_8, porta.STOPBITS_2, porta.PARITY_NONE);
 			porta.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
 			
 		}catch (Exception e) {
@@ -208,7 +208,7 @@ public class SerialCommLeitura implements Runnable, SerialPortEventListener
         	  break;
           
           case SerialPortEvent.DATA_AVAILABLE:
-        	  //Novo algoeritmo de leitura
+        	  //Novo algoritmo de leitura
         	  long time = System.currentTimeMillis();
         	  long timeout = 1000;
         	  long timeNow = System.currentTimeMillis();
@@ -216,19 +216,14 @@ public class SerialCommLeitura implements Runnable, SerialPortEventListener
         	  {
         		  try{
         			  novoDado = entrada.read();
-        			  if(novoDado == -1){ break;}
-        			  
-        			  if('\r' == (char)novoDado)
-        			  {
-        				  bufferLeitura.append('\n');
-        				  setPeso(new String(bufferLeitura));
-        	        	  System.out.println(getPeso());
-        				  bufferLeitura = new StringBuffer();
-        				
-        			  }else
-        			  {
+        			  if(novoDado == -1){ 
+         				 bufferLeitura.append('\n');
+          				 setPeso(new String(bufferLeitura));
+          	        	 System.out.println(getPeso());
+          				 bufferLeitura = new StringBuffer();
+        				  break;
+        			  }else{
         				  bufferLeitura.append((char)novoDado);
-        				  
         			  }
         		  }catch (Exception e) {
 					// TODO: handle exception
@@ -236,8 +231,6 @@ public class SerialCommLeitura implements Runnable, SerialPortEventListener
         		  }
         		 timeNow = System.currentTimeMillis();
         	  }
-        	 // setPeso(new String(bufferLeitura));
-        	 // System.out.println(getPeso());
         	  break;
 		}
 		

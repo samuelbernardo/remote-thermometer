@@ -72,6 +72,7 @@ FORMAT = ihex
 # Target file name (without extension).
 TARGET = main
 
+AUXTARGET = sys0.c time.c comm.c
 
 # Object files directory
 #     To put object files in current directory, use a dot (.), do NOT make
@@ -80,7 +81,8 @@ OBJDIR = .
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = $(TARGET).c
+SRC = $(AUXTARGET) $(TARGET).c
+#SRC = $(TARGET).c
 
 
 # List C++ source files here. (C dependencies are automatically generated.)

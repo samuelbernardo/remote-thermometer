@@ -34,7 +34,7 @@ extern uint8 SYS0_led_timer;  /* 10 ms */
 /* public functions **/
 
 void SYS0_init(void);
-void SYS0_task();
+void SYS0_task(void);
 void SYS0_led_num_pulses(uint8 num_pulses);
 
 #endif
