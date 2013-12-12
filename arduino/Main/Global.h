@@ -13,13 +13,24 @@
 
 /*Variáveis Globais*/
 #define buffersize 16
-extern char recievedBuffer[buffersize];
-extern char transmitBuffer[buffersize];
-extern  int receivedbuffersize;
-extern  int transmitbuffersize;
-extern  int LIGHTValue;
-extern  int LIGHTValueT1;
-extern  int LIGHTValueT2;
+static char recievedBuffer[buffersize];
+static char transmitBuffer[buffersize];
+static  int receivedbuffersize;
+static  int transmitbuffersize;
+static  int LIGHTValue;
+static  int LIGHTValueT1;
+static  int LIGHTValueT2;
+static  float TMP36Value;
+static  float TMP36ValueT1;
+static  int Mode;
+static  int EndProcess;
+static  int lockTransmitSave;
+static int lockTransmit;
+static int lockReceive;
+static int EndReceive;
+
+static int anlRd(uint8_t pin);
+static int dgtRd(uint8_t pin);
 
 
 

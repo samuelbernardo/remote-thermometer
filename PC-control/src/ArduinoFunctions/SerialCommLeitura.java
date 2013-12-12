@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Arduino.ArduinoComm;
+
 public class SerialCommLeitura implements Runnable, SerialPortEventListener
 {
 	public String DadosLidos;
@@ -216,14 +218,14 @@ public class SerialCommLeitura implements Runnable, SerialPortEventListener
         	  {
         		  try{
         			  novoDado = entrada.read();
-        			  if(novoDado == -1){ 
-         				 bufferLeitura.append('\n');
+        			  if(novoDado == -1 ){ 
+         				// bufferLeitura.append('\n');
           				 setPeso(new String(bufferLeitura));
           	        	 System.out.println(getPeso());
           				 bufferLeitura = new StringBuffer();
         				  break;
         			  }else{
-        				  bufferLeitura.append((char)novoDado);
+        				  if(novoDado != '\n' && novoDado != '\r' )bufferLeitura.append((char)novoDado);
         			  }
         		  }catch (Exception e) {
 					// TODO: handle exception
