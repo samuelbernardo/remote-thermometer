@@ -1,3 +1,7 @@
+AtmelStudio/arduino-src/*
+AtmelStudio/avr8/*
+Java/rxtx-src/*
+
 # Object files
 *.o
 *.ko
